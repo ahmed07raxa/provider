@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_state_management/provider/count_provider.dart';
 import 'package:provider_state_management/view/home_screen.dart';
 
 void main() {
@@ -10,13 +12,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'PROVIDER STATE MANAGEMENT',
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return ChangeNotifierProvider(
+      create: (context) => CountProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'PROVIDER STATE MANAGEMENT',
+        theme: ThemeData(
+          colorScheme: .fromSeed(seedColor: Colors.blue),
+          useMaterial3: true,
+        ),
+        home: HomeScreen(),
       ),
-      home: HomeScreen(),
     );
   }
 }
