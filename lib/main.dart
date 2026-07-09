@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_state_management/provider/count_provider.dart';
-import 'package:provider_state_management/view/home_screen.dart';
+import 'package:provider_state_management/provider/favourite_provider.dart';
+import 'package:provider_state_management/view/screens/favourite/favourite_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,16 +13,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => CountProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => CountProvider()),
+        ChangeNotifierProvider(create: (context) => FavouriteProvider()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'PROVIDER STATE MANAGEMENT',
         theme: ThemeData(
-          colorScheme: .fromSeed(seedColor: Colors.blue),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           useMaterial3: true,
         ),
-        home: HomeScreen(),
+        home: FavouriteScreen(),
       ),
     );
   }
