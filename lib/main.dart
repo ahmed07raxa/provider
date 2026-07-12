@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provider_state_management/provider/auth_provider.dart';
 import 'package:provider_state_management/provider/count_provider.dart';
 import 'package:provider_state_management/provider/favourite_provider.dart';
-import 'package:provider_state_management/view/screens/notify_listener.dart';
+import 'package:provider_state_management/view/screens/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => CountProvider()),
         ChangeNotifierProvider(create: (context) => FavouriteProvider()),
+        ChangeNotifierProvider(create: (context) => AuthProvider()),
       ],
       child: Builder(
         builder: (context) {
@@ -24,10 +26,10 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'PROVIDER STATE MANAGEMENT',
             theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
               useMaterial3: true,
             ),
-            home: NotifyListener(),
+            home: Login(),
           );
         },
       ),
